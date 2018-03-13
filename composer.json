@@ -9,7 +9,8 @@
         }
     ],
     "require": {
-        "php": "^7.0.16"
+        "php": "^7.0.16",
+        "pmdevelopment/tool-bundle": "*"
     },
     "autoload": {
         "psr-0": {

@@ -5,9 +5,9 @@ namespace PM\Bundle\LoggerBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Class PMToolBundle
+ * Class PMLoggerBundle
  *
- * @package PM\Bundle\ToolBundle
+ * @package PM\Bundle\LoggerBundle
  */
 class PMLoggerBundle extends Bundle
 {

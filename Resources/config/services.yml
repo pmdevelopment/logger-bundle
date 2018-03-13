@@ -1,0 +1,7 @@
+services:
+    pm_bundle_logger.services.log_service:
+        class: PM\Bundle\LoggerBundle\Services\LogService
+        public: true
+        calls:
+            - [setDoctrine, ['@doctrine']]
+            - [setLogger, ['@?logger']]
