@@ -1,0 +1,20 @@
+{
+    "name": "pmdevelopment/logger-bundle",
+    "description": "Logger for Symfony",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sven Joder",
+            "email": "sj@pmdevelopment.de"
+        }
+    ],
+    "require": {
+        "php": "^7.0.16"
+    },
+    "autoload": {
+        "psr-0": {
+            "PM\\Bundle\\LoggerBundle": ""
+        }
+    },
+    "target-dir": "PM/Bundle/LoggerBundle"
+}
