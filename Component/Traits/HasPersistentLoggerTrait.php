@@ -2,21 +2,21 @@
 /**
  * Created by PhpStorm.
  * User: sjoder
- * Date: 13.03.2018
- * Time: 16:10
+ * Date: 02.04.2018
+ * Time: 12:19
  */
 
-namespace PM\Bundle\LoggerBundle\Component\Interfaces;
-
+namespace PM\Bundle\LoggerBundle\Component\Traits;
 
 use PM\Bundle\LoggerBundle\Services\LogService;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 
 /**
- * Trait HasPersistentLoggerServiceTrait
+ * Trait HasPersistentLoggerTrait
  *
- * @package PM\Bundle\LoggerBundle\Component\Interfaces
+ * @package PM\Bundle\LoggerBundle\Component\Traits
  */
-trait HasPersistentLoggerServiceTrait
+trait HasPersistentLoggerTrait
 {
     /**
      * @var LogService
@@ -28,6 +28,10 @@ trait HasPersistentLoggerServiceTrait
      */
     public function getLogService()
     {
+        if ($this instanceof ContainerAwareInterface) {
+            return $this->getContainer()->get('pm_bundle_logger.services.log_service');
+        }
+
         if (false === ($this->logService instanceof LogService)) {
             throw new \LogicException('LogService not available. Maybe Setter not called?');
         }
@@ -38,7 +42,7 @@ trait HasPersistentLoggerServiceTrait
     /**
      * @param LogService $logService
      *
-     * @return HasPersistentLoggerServiceTrait
+     * @return HasPersistentLoggerTrait
      */
     public function setLogService($logService)
     {
