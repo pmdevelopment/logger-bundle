@@ -5,3 +5,4 @@ services:
         calls:
             - [setDoctrine, ['@doctrine']]
             - [setLogger, ['@?logger']]
+            - [setRequestStack, [ '@?request_stack']]

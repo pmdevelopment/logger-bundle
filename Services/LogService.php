@@ -10,8 +10,9 @@ namespace PM\Bundle\LoggerBundle\Services;
 
 use FOS\UserBundle\Model\User;
 use PM\Bundle\LoggerBundle\Entity\Entry;
-use PM\Bundle\ToolBundle\Framework\Traits\Services\HasDoctrineServiceTrait;
-use PM\Bundle\ToolBundle\Framework\Traits\Services\HasLoggerServiceTrait;
+use PM\Bundle\ToolBundle\Components\Traits\HasDoctrineTrait;
+use PM\Bundle\ToolBundle\Components\Traits\HasLoggerTrait;
+use PM\Bundle\ToolBundle\Components\Traits\HasRequestStackTrait;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -22,8 +23,9 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class LogService
 {
-    use HasLoggerServiceTrait;
-    use HasDoctrineServiceTrait;
+    use HasLoggerTrait;
+    use HasDoctrineTrait;
+    use HasRequestStackTrait;
 
     /**
      * Log
@@ -55,6 +57,10 @@ class LogService
             }
         } catch (\RuntimeException $exception) {
             /* No Logger available */
+        }
+
+        if (null === $request) {
+            $request = $this->getRequestCurrent(true);
         }
 
         $entry = new Entry();
