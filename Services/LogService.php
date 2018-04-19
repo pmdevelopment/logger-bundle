@@ -72,6 +72,22 @@ class LogService
             ->setUser($user)
             ->setContext(json_encode($context));
 
+        if ('cli' === php_sapi_name()) {
+            $uri = [];
+
+            if (true === isset($_SERVER['PWD'])) {
+                $uri[] = $_SERVER['PWD'];
+            }
+
+            if (true === isset($_SERVER['argv']) && true === is_array($_SERVER['argv'])) {
+                $uri = array_merge($uri, $_SERVER['argv']);
+            }
+
+            $entry
+                ->setRequestMethod('CLI')
+                ->setRequestUri(implode(' ', $uri));
+        }
+
         $this->persistAndFlush($entry);
 
         return $entry->getUniqueId();
