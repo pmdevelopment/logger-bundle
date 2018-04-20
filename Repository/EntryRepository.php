@@ -69,4 +69,20 @@ class EntryRepository extends EntityRepository
 
         return $result[0];
     }
+
+    /**
+     * Get Count
+     *
+     * @return int
+     *
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function getCount()
+    {
+        $builder = $this->createQueryBuilder('entry');
+        $builder
+            ->select('COUNT(entry)');
+
+        return intval($builder->getQuery()->getSingleScalarResult());
+    }
 }

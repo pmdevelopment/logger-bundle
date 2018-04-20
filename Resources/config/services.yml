@@ -6,3 +6,12 @@ services:
             - [setDoctrine, ['@doctrine']]
             - [setLogger, ['@?logger']]
             - [setRequestStack, [ '@?request_stack']]
+
+
+
+    pm_bundle_logger.twig.logger_twig_extension:
+        class: PM\Bundle\LoggerBundle\Twig\LoggerTwigExtension
+        calls:
+            - [setDoctrine, ['@doctrine']]
+        tags:
+            - { name: twig.extension }
