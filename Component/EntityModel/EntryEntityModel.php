@@ -23,6 +23,18 @@ class EntryEntityModel
     const TYPE_ERROR = 'error';
     const TYPE_WARNING = 'warning';
 
+    /**
+     * Get Types
+     *
+     * @return array
+     */
+    public static function getTypes()
+    {
+        return [
+            self::TYPE_ERROR,
+            self::TYPE_WARNING,
+        ];
+    }
 
     /**
      * Set Exception
