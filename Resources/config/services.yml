@@ -1,12 +1,19 @@
 services:
     pm_bundle_logger.services.log_service:
+        deprecated: 'The "%service_id%" service is deprecated, use class name instead.'
         class: PM\Bundle\LoggerBundle\Services\LogService
         public: true
+        arguments: ['@doctrine']
         calls:
-            - [setDoctrine, ['@doctrine']]
             - [setLogger, ['@?logger']]
             - [setRequestStack, [ '@?request_stack']]
 
+    PM\Bundle\LoggerBundle\Services\LogService:
+        public: true
+        autowire: true
+        calls:
+            - [setLogger, ['@?logger']]
+            - [setRequestStack, [ '@?request_stack']]
 
 
     pm_bundle_logger.twig.logger_twig_extension:

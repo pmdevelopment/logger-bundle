@@ -10,7 +10,10 @@
     ],
     "require": {
         "php": "^7.0.16",
-        "pmdevelopment/tool-bundle": "*"
+        "friendsofsymfony/user-bundle": "^2.0",
+        "pmdevelopment/tool-bundle": "*",
+        "symfony/symfony": "^2.8|^3.4",
+        "symfony/doctrine-bridge": "^2.8|^3.4"
     },
     "autoload": {
         "psr-0": {

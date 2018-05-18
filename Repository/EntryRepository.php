@@ -74,8 +74,6 @@ class EntryRepository extends EntityRepository
      * Get Count
      *
      * @return int
-     *
-     * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function getCount()
     {
@@ -83,6 +81,10 @@ class EntryRepository extends EntityRepository
         $builder
             ->select('COUNT(entry)');
 
-        return intval($builder->getQuery()->getSingleScalarResult());
+        try {
+            return intval($builder->getQuery()->getSingleScalarResult());
+        } catch (\Exception $e) {
+            return -1;
+        }
     }
 }

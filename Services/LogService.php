@@ -13,6 +13,7 @@ use PM\Bundle\LoggerBundle\Entity\Entry;
 use PM\Bundle\ToolBundle\Components\Traits\HasDoctrineTrait;
 use PM\Bundle\ToolBundle\Components\Traits\HasLoggerTrait;
 use PM\Bundle\ToolBundle\Components\Traits\HasRequestStackTrait;
+use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -26,6 +27,16 @@ class LogService
     use HasLoggerTrait;
     use HasDoctrineTrait;
     use HasRequestStackTrait;
+
+    /**
+     * LogService constructor.
+     *
+     * @param RegistryInterface $registry
+     */
+    public function __construct(RegistryInterface $registry)
+    {
+        $this->setDoctrine($registry);
+    }
 
     /**
      * Log
