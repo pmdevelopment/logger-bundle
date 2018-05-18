@@ -9,6 +9,7 @@ services:
             - [setRequestStack, [ '@?request_stack']]
 
     PM\Bundle\LoggerBundle\Services\LogService:
+        class: PM\Bundle\LoggerBundle\Services\LogService
         public: true
         autowire: true
         calls:
