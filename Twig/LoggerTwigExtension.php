@@ -10,6 +10,7 @@ namespace PM\Bundle\LoggerBundle\Twig;
 
 use PM\Bundle\LoggerBundle\Entity\Entry;
 use PM\Bundle\ToolBundle\Components\Traits\HasDoctrineTrait;
+use Symfony\Bridge\Doctrine\RegistryInterface;
 
 
 /**
@@ -20,6 +21,14 @@ use PM\Bundle\ToolBundle\Components\Traits\HasDoctrineTrait;
 class LoggerTwigExtension extends \Twig_Extension
 {
     use HasDoctrineTrait;
+
+    /**
+     * LoggerTwigExtension constructor.
+     */
+    public function __construct(RegistryInterface $registry)
+    {
+        $this->setDoctrine($registry);
+    }
 
     /**
      * Get Functions

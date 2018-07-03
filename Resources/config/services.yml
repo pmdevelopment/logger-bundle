@@ -7,8 +7,7 @@ services:
             - [setRequestStack, [ '@?request_stack']]
 
 
-    PM\Bundle\LoggerBundle\Twig\LoggerTwigExtension
-        calls:
-            - [setDoctrine, ['@doctrine']]
+    PM\Bundle\LoggerBundle\Twig\LoggerTwigExtension:
+        autowire: true
         tags:
             - { name: twig.extension }
