@@ -29,7 +29,7 @@ trait HasPersistentLoggerTrait
     public function getLogService()
     {
         if ($this instanceof ContainerAwareInterface) {
-            return $this->getContainer()->get('pm_bundle_logger.services.log_service');
+            return $this->getContainer()->get(LogService::class);
         }
 
         if (false === ($this->logService instanceof LogService)) {
