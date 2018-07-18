@@ -50,6 +50,4 @@ trait HasPersistentLoggerTrait
 
         return $this;
     }
-
-
 }
